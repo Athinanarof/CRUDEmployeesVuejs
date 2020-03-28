@@ -3,7 +3,11 @@
 		<h1>Employees</h1>
 
 		<employee-form  @add:employee='addEmployee'/>
-		<employee-table :employees="employees" @delete:employee='deleteEmployee'/>
+		<employee-table 
+		:employees="employees" 
+		@delete:employee='deleteEmployee'
+		@edit:employee="editEmployee"
+		/>
 
 		<!-- this is the same thing-->
 		<!--
@@ -61,6 +65,11 @@
 			deleteEmployee(id) {
 				this.employees = this.employees.filter(
 					employee => employee.id != id
+				)
+			},
+			editEmployee(id, updatedEmployee) {
+				this.employees = this.employees.map(employee =>
+					employee.id === id ? updatedEmployee : employee
 				)
 			}
 		}
