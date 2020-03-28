@@ -2,6 +2,7 @@
 	<div id="app" class="small-container">
 		<h1>Employees</h1>
 
+		<employee-form/>
 		<employee-table :employees="employees"/>
 
 		<!-- this is the same thing-->
@@ -14,12 +15,14 @@
 
 <script type="text/javascript">
 	import EmployeeTable from '@/components/EmployeeTable.vue'
+	import EmployeeForm from '@/components/EmployeeForm.vue'
 
 	export default 
 	{
 		name: 'app',
 		components: {
-			EmployeeTable
+			EmployeeTable,
+			EmployeeForm
 		},
 		data() {
 			return {
