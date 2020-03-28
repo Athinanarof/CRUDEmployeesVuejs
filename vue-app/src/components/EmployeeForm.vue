@@ -1,12 +1,17 @@
 <template>
+	<!--<component @name-of-emitted-event="methodToCallOnceEmitted"></component>-->
 	<div id="employee-form">
-		<form>
+		<form @submit.prevent="handleSubmit">
 			<label>Employee name</label>
-			<input type="text">
+			<input v-model="employee.name" type="text">
 			<label>Employee email</label>
-			<input type="text">
+			<input v-model="employee.email" type="text">
 			<button>Add Employee</button>
 		</form>
+
+		<!-- This is the same
+		<form v-on:submit="handleSubmit">
+		-->
 	</div>
 </template>
 
@@ -21,6 +26,12 @@
 				},
 			}
 		},
+		methods: {
+			handleSubmit() {
+				// The add:employee syntax (as opposed to add-employee or something else) is recommended in the Vue documentation
+				this.$emit('add:employee', this.employee)
+			}
+		}
 	}
 </script>
 
